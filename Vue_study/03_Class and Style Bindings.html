@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="static" id="app" v-bind:class="{ active: isActive ,'text-danger':'hasError'}">
+        hi vue
+    </div>
+    <br />
+    <!-- 传个对象的方式 -->
+    <div id="app2" v-bind:class="classObject">
+        hi vue
+    </div>
+    <br />
+    <!-- 用计算属性 "我们也可以在这里绑定一个返回对象的计算属性。这是一个常用且强大的模式：" -->
+    <div id="app3" v-bind:class="classObject">
+        hi vue3
+    </div>
+    <br />
+    <!-- 数组语法 -->
+    <div id="app4" v-bind:class="[activeClass, errorClass]">
+        hi vue4
+    </div>
+    <br />
+    <!-- v-bind:style 绑定内联样式 -->
+    <div id="app5" v-bind:style="{color:activeColor, fontSize:fontSize + 'px' }">
+        hi vue5
+    </div>
+    <br />
+    <div class="active">
+        hi vue
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            isActive: true,
+            hasError: false,
+        }
+    })
+
+    var vm = new Vue({
+        el: "#app2",
+        data: {
+            classObject: {
+                active: true
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: "#app3",
+        data: {
+            isActive: true,
+            error: null
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error === 'fatal'
+                }
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: "#app4",
+        data: {
+            activeClass: 'active',
+            errorClass: 'text-danger'
+        }
+    })
+
+    var vm = new Vue({
+        el: "#app5",
+        data: {
+            activeColor: 'blue',
+            fontSize: 50
+        }
+    })
+</script>
+
+<style>
+    .active {
+        background-color: red;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+    }
+
+    .static {
+        font-weight: bold;
+    }
+
+    .text-danger {
+        color: aqua;
+    }
+</style>
+
+</html>

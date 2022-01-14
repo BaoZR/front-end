@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="components-demo">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <blog-title title="blue"></blog-title>
+        <blog-title title="yello"></blog-title>
+        <blog-title title="red"></blog-title>
+        <blog-title v-for="post in posts" v-bind:id="post.id" v-bind:title='post.title'></blog-title>
+        <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-post>
+    </div>
+    <div id="blog-posts-events-demo">
+        <div :style="{ fontSize: postFontSize + 'em' }">
+            <blog-post-listen v-for="post in posts" v-bind:key="post.id" v-bind:post="post"
+            v-on:enlarge-text="postFontSize += 0.1"></blog-post-listen>
+        </div>
+    </div>
+    <script>
+        Vue.component('button-counter', {
+            //一个组件的 data 选项必须是一个函数
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{count}} times</button>'
+        })
+        //通过 Prop 向子组件传递数据
+        Vue.component('blog-title', {
+            props: ['id', 'title'],
+            template: '<h3>{{id}}{{title}}</h3>'
+        })
+    
+        Vue.component('blog-post', {
+            props: ['post'],
+            template: `
+                <div>
+                    <h3>{{post.title}}</h3>
+                    <div v-html="post.content"></div>
+                </div>
+            `
+        })
+        // 监听子组件事件// $emit method, passing the name of the event
+        Vue.component('blog-post-listen', {
+            props: ['post'],
+            template: `
+                <div class="blog-post-listen">
+                    <h3>{{post.title}}</h3>
+                    <button v-on:click="$emit('enlarge-text')">Enlarge text</button>
+                    <div v-html="post.content"></div>
+                </div>
+            `
+        })
+    
+        new Vue({
+            el: '#components-demo',
+            data: {
+                posts: [
+                    { id: 1, title: '1', content: 'hello world' },
+                    { id: 2, title: '2', content: 'hello vue' },
+                    { id: 3, title: '3', content: 'hello js' }
+                ]
+            }
+        })
+    
+    
+        new Vue({
+            el: '#blog-posts-events-demo',
+            data: {
+                posts: [
+                    { title: '1', content: 'hello world' },
+                    { title: '2', content: 'hello vue' },
+                    { title: '3', content: 'hello js' }
+                ],
+                postFontSize: 3
+            }
+        })
+    </script>
+</body>
+
+</html>
+

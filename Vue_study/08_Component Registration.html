@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+<!-- 如果你还在阅读，说明你使用了诸如 Babel 和 webpack 的模块系统。在这些情况下，
+    我们推荐创建一个 components 目录，并将每个组件放置在其各自的文件中。 -->
+<body>
+    <!--  W3C 规范中的自定义组件名 (字母全小写且必须包含一个连字符) -->
+    <div id="app">
+        <button-counter></button-counter>
+        <test></test>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('button-counter', {
+            props: ['title'],
+            data: function () {
+                return {}
+            },
+            template: '<div><h1>hi...</h1></div>',
+            methods: {
+            }
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                clicknow: function (e) {
+                    console.log(e)
+                }
+            },
+            components:{
+                test: {
+                    template:"<h2>h2..</h2>" 
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 用 v-for 把一个数组对应为一组元素 
+    建议尽可能在使用 v-for 时提供 key attribute，
+    除非遍历输出的 DOM 内容非常简单，
+    或者是刻意依赖默认行为以获取性能上的提升。-->
+    <ul id="example-1">
+        <li v-for="item in items" :key="item.message">
+            {{item.message}}
+        </li>
+    </ul>
+    <ul id="example-2">
+        <li v-for="(item, index) in items">
+            {{parentMessage}}-{{index}}-{{item.message}}
+        </li>
+    </ul>
+    <ul id="v-for-object">
+        <li v-for="value in object">
+            {{value}}
+        </li>
+        <br />
+        <li v-for="(value, name, index) in object">
+            {{index}}.{{name}}.{{value}}
+        </li>
+    </ul>
+
+    <script>
+        var vm = new Vue({
+            el: '#example-1',
+            data: {
+                items: [{ message: 'Foo' }, { message: 'Bar' }]
+            }
+        })
+        var vm2 = new Vue({
+            el: '#example-2',
+            data: {
+                parentMessage: 'Parent',
+                items: [{ message: 'Foo' }, { message: 'Bar' }]
+            }
+        })
+
+        new Vue({
+            el: '#v-for-object',
+            data: {
+                object: {
+                    title: "123",
+                    author: "bob",
+                    time: "19999"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

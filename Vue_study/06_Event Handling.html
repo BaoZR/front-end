@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="example">
+        <button v-on:click="count++">add</button>
+        <p>hello {{count}}</p>
+        
+        <!-- 在 `methods` 对象中定义方法 -->
+        <button v-on:click="greet">greet</button>
+
+        <!-- 内联 JavaScript 语句 -->
+        <button style="display:block" v-on:click="say('hi')">say hi</button>
+        <button style="display:block" v-on:click="say('hello')">say hello</button>
+
+        <!-- 在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法 -->
+        <button style="display:block" v-on:click="warn('form cannot be submitted yet', $event)">
+            Submit
+        </button>
+    </div>
+    <script>
+        new Vue({
+            el: '#example',
+            data: {
+                count: 0,
+                name: 'hello js'
+            },
+            methods: {
+                greet: function (event) {
+                    alert('Hello' + this.name + '!');
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                },
+                say: function (message) {
+                    alert(message)
+                },
+                warn: function (message, event) {
+                    if (event) {
+                        event.preventDefault()
+                    }
+                    alert(message)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

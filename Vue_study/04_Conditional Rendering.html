@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app1">
+        <h1 v-if="awesome">Vue is awesome</h1>
+        <h1 v-else>Oh no</h1>
+        <template v-if="awesome">
+            <h1>1</h1>
+            <h1>2</h1>
+            <h1>3</h1>
+        </template>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app1",
+        data: {
+            awesome: true
+        }
+    })
+</script>
+
+</html>
