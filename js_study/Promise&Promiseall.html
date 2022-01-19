@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 
+    待定（pending）: 初始状态，既没有被兑现，也没有被拒绝。
+    已兑现（fulfilled）: 意味着操作成功完成。
+    已拒绝（rejected）: 意味着操作失败。
+-->
+<script>
+    let p1 = new Promise((resolve, reject) => {
+        let num = Math.ceil(Math.random() * 10)//1到10的随机数
+        if (num > 5) {
+            resolve(num)
+        } else {
+            reject(num)
+        }
+    })
+
+    let p2 = new Promise((resolve, reject) => {
+        let num = Math.ceil(Math.random() * 10)//1到10的随机数
+        if (num > 5) {
+            resolve(num)
+        } else {
+            reject(num)
+        }
+    })
+
+    p1.then((data) => {
+        console.log(`数字是：${data}`)
+    }, (err) => {
+        console.log(`数字应当大于5，实际值为${err}`)
+    })
+
+    p2.then((data) => {
+        console.log(`数字是：${data}`)
+    }, (err) => {
+        console.log(`数字应当大于5，实际值为${err}`)
+    })
+
+    Promise.all([p1, p2]).then((result) => {
+        console.log(result)
+    }, (err) => {
+        console.log(err)
+    })
+
+</script>
+
+<body>
+
+</body>
+
+</html>
