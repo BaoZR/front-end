@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- old new Object -->
+    <script>
+        function Point1(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        Point1.prototype.toString = function () {
+            return "(" + this.x + "," + this.y + ")"
+        }
+
+        Point1.prototype.calc = function () {
+            return Math.pow(this.x, 2) + Math.pow(this.y, 2)
+        }
+
+        var p1 = new Point1(1, 2)
+        console.log(p1.toString())
+    </script>
+
+    <!-- ES6 class -->
+    <script>
+        class Point2 {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            // 定义toString()方法的时候，前面不需要加上function这个关键字
+            toString() {
+                return '(' + this.x + ',' + this.y + ')';
+            }
+        }
+        var p2 = new Point2(2, 3);
+        console.log("ES6 class:" + p2.toString())
+    </script>
+
+    <script>
+        console.log(typeof Point2)//function
+        //类的数据类型就是函数，类本身就指向构造函数。
+    </script>
+
+    <script>
+        class Point3 {
+            constructor() { }
+            toString() { }
+            toValue() { }
+        }
+        // 等同于
+        Point3.prototype = { constructor() { }, toString() { }, toValue() { } };
+    </script>
+    <script>
+        //可以通过实例的__proto__属性为“类”添加方法。
+
+        // __proto__ 并不是语言本身的特性，这是各大厂商具体实现时添加的私有属性，
+        //虽然目前很多现代浏览器的 JS 引擎中都提供了这个私有属性，
+        //但依旧不建议在生产中使用该属性，避免对环境产生依赖。
+        //生产环境中，我们可以使用 Object.getPrototypeOf 方法
+        //来获取实例对象的原型，然后再来为原型添加方法/属性。
+
+    </script>
+</body>
+
+</html>
