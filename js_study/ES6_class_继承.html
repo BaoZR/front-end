@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Point{
+            constructor(x, y){
+                this.x = x;
+                this.y = y;
+            }
+            toString(){
+                return "(" + "this.x" + "," + "this.y" + ")"
+            }
+
+            static static_toString(){
+                return "(" + "this.x" + "," + "this.y" + ")"
+            }
+        }
+
+        //子类必须在constructor方法中调用super方法，
+        //否则新建实例时会报错。这是因为子类自己的this对象，
+        //必须先通过父类的构造函数完成塑造，
+        //得到与父类同样的实例属性和方法，然后再对其进行加工，
+        //加上子类自己的实例属性和方法。
+        //如果不调用super方法，子类就得不到this对象。
+        class ColorPoint extends Point{
+            constructor(x, y, color){
+                super(x, y);
+                this.color = color;
+            }
+            toString(){
+                return this.color + ' ' + super.toString();
+            }
+        }
+
+        var p = new ColorPoint(1, 2, "blue")
+        console.log(p.toString())
+
+        //父类的静态方法，也会被子类继承。
+        class extendPoint extends Point{
+            constructor(x, y){
+                super(x, y);
+            }
+        }
+
+        //var extendp = new extendPoint(2, 3);
+        //console.log(extendp.static_toString())//这样不对
+        //静态方法由类调，不由实例调
+        console.log(extendPoint.static_toString())
+
+
+    </script>
+</body>
+</html>
