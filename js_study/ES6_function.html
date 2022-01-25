@@ -1,21 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        //ES6 函数参数默认值
-        function log(x, y = 'world'){
-            console.log(x +' ' + y)
+        //1.ES6 函数参数默认值
+        function log(x, y = 'world') {
+            console.log(x + ' ' + y)
         };
 
         log('hello');
         log('hello', '     wwwwww');
         log();
+
+        console.log("==============================");
+
+        //2.rest参数
+        //arguments变量的写法
+        function old_sortNumbers() {
+            return Array.from(arguments).sort();
+        }
+
+        //rest参数的用法
+        const sortNumbers = (...numbers) => numbers.sort();
+
+        //arguments对象不是数组，而是一个类似数组的对象。
+        //所以为了使用数组的方法，必须使用Array.from先将其转为数组。
+        //rest 参数就不存在这个问题，它就是一个真正的数组，
+        //数组特有的方法都可以使用。
+
+        //3.严格模式 
+
+        //4.name 属性
+        //函数的name属性，返回该函数的函数名。
+        function foo() { }
+        foo.name // "foo"
+        //匿名函数
+        //具名函数
+
+        //5.箭头函数 
+        const headAndTail = (head, ...tail) => [head, tail];
+        console.log(headAndTail(1, 2, 3, 4, 5))
+
+        function Timer() {
+            this.s1 = 0;
+            this.s2 = 0;
+            // 箭头函数
+            setInterval(() => this.s1++, 1000);
+            // 普通函数
+            setInterval(function () {
+                this.s2++;
+            }, 1000);
+        }
+
+        var timer = new Timer();
+
+        setTimeout(() => console.log('s1: ', timer.s1), 3100);
+        setTimeout(() => console.log('s2: ', timer.s2), 3100);
+        // s1: 3
+        // s2: 0
+
+        //???
+        var handler = {
+            id: '123456',
+
+            init: function () {
+                document.addEventListener('click',
+                    event => this.doSomething(event.type), true);
+            },
+
+            doSomething: function (type) {
+                console.log('Handling ' + type + ' for ' + this.id);
+            }
+        };
+
+        //除了this，以下三个变量在箭头函数之中也是不存在的，
+        //指向外层函数的对应变量：arguments、super、new.target。
+
+        //不适用场合
+        //(1)对象的属性建议使用传统的写法定义，不要用箭头函数定义。
+        //(2)需要动态this的时候
+
+
+        //6.尾调用优化
+        //尾调用（Tail Call）是函数式编程的一个重要概念，
+        //本身非常简单，一句话就能说清楚，
+        //就是指某个函数的最后一步是调用另一个函数。
+        function f(x) {
+            return g(x);//这里不能加别的操作比如加一。
+        }
+        //这就叫做“尾调用优化”（Tail call optimization），
+        //即只保留内层函数的调用帧。如果所有函数都是尾调用，
+        //那么完全可以做到每次执行时，
+        //调用帧只有一项，这将大大节省内存。这就是“尾调用优化”的意义。
+
+        //尾递归 
+        //函数调用自身，称为递归。如果尾调用自身，就称为尾递归。
+        function factorial(n, total) {
+            if (n === 1) return total;
+            return factorial(n - 1, n * total);
+        }
+
+        factorial(5, 1) // 120
+        //尾递归优化
+        //尾递归优化只在严格模式
+        // /自己实现尾递归优化，采用“循环”换掉“递归”
+        
+        //7.函数参数的尾逗号 
+        //8.Function.prototype.toString() §
+        //9.catch 命令的参数省略 ES2019
+        try {
+            // ...
+        } catch (err) {// old处理错误,err必须有
+
+        }
+
     </script>
 </body>
+
 </html>
