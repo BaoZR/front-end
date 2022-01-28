@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="div1">
+
+    <script>
+        //1.DOM 文档对象模型(Document Object Model)
+        //将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作
+        //DOM 只是一个接口规范
+
+        //2.DOM 的最小组成单位叫做节点（node），七种节点类型
+    
+        //3.节点树
+        //文档的第一层有两个节点，第一个是文档类型节点（<!doctype html>），
+        //第二个是 HTML 网页的顶层容器标签<html>。
+        //后者构成了树结构的根节点（root node）
+        //三种层级关系
+        //父节点关系、子节点关系、同级节点关系
+
+        //4.Node 接口
+        //属性
+        //4.1.1 Node.prototype.nodeType
+        //4.1.2 Node.prototype.nodeName
+        </script>
+        
+        <div id="d1">helloworld</div>
+        
+        <script> 
+            var div = document.getElementById('d1')
+            div.nodeName//DIV
+
+        //4.1.3 Node.prototype.nodeValue
+        </script>
+
+        <div id="divA">This is <span>some</span> text</div>
+        <script>           
+        //4.1.4 Node.prototype.textContent
+        document.getElementById('divA').textContent
+        //4.1.5 Node.prototype.baseURI
+        //4.1.6 Node.prototype.ownerDocument
+    </script>
+    <div id="d3">hello</div><div id="d4">world</div>
+    <script>
+        //4.1.7 Node.prototype.nextSibling
+        var d3 = document.getElementById('d3');
+        var d4 = document.getElementById('d4');
+        d3.nextSibling === d4
+
+        //nextSibling与firstChild配合遍历所有的子节点
+        //var el = document.getElementById('div1').firstChild;
+        //while(el !== null){
+            //console.log(el.nodeName);
+            //el = el.nextSibling;
+        //}
+
+        //4.1.8 Node.prototype.previousSibling
+        //4.1.9 Node.prototype.parentNode
+        //4.1.10 Node.prototype.parentElement
+        //4.1.11 Node.prototype.firstChild，Node.prototype.lastChild
+
+        //4.1.12 Node.prototype.childNodes
+        var div = document.getElementById('div1');
+        var children = div.childNodes;
+
+        for (var i = 0; i < children.length; i++) {
+            // ...
+        }
+        //4.1.13 Node.prototype.isConnected
+        var test = document.createElement('p');
+        test.isConnected // false
+
+        document.body.appendChild(test);//加到body的最后面
+        test.isConnected // true
+
+        console.log("===========================================")
+        //4.2 方法
+        //4.2.1 Node.prototype.appendChild()
+        //4.2.2 Node.prototype.hasChildNodes()
+        function DOMComb(parent, callback) {
+            if (parent.hasChildNodes()) {
+                for (var node = parent.firstChild; node; node = node.nextSibling) {
+                    DOMComb(node, callback);
+                }
+            }
+            callback(parent);
+        }
+        DOMComb(document.body, console.log)
+
+        //4.2.3 Node.prototype.cloneNode()
+        //4.2.4 Node.prototype.insertBefore()
+        //4.2.5 Node.prototype.removeChild()
+        //移除该子节点。返回值是移除的子节点
+        //4.2.6 Node.prototype.replaceChild()
+        //4.2.7 Node.prototype.contains()
+        //4.2.8 Node.prototype.compareDocumentPosition()
+        //4.2.9 Node.prototype.isEqualNode()，Node.prototype.isSameNode()
+        //4.2.10 Node.prototype.normalize()
+        //4.2.11 Node.prototype.getRootNode()
+    </script>
+</body>
+</html>
