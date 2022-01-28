@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dribbble.css" type="text/css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3164953_lqjueapu9j.css">
+    </link>
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="head">
+        <a href="#" class="logo">
+            <img src="./image/logo.png" alt="logo">
+        </a>
+        <ul>
+            <li><a href="#">Inspiration</a></li>
+            <li><a href="#">Find Work</a></li>
+            <li><a href="#">Learn Design</a></li>
+            <li><a href="#">Go Pro</a></li>
+            <li><a href="#">Marketplace</a></li>
+            <li><a href="#">Hire Designers</a></li>
+        </ul>
+        <div class="right">
+            <!-- 如何使用icon 如何设置icon-->
+            <a class="iconfont  icon-search"></a>
+            <a class="sign_in">Sign in</a>
+            <div class="divide">/</div>
+            <a class="sign_up">Sign up</a>
+            <a class="button">Start a project</a>
+        </div>
+    </header>
+    <banner class="banner layout">
+        <div class="wrapper">
+            <div class="text">
+                <!-- 如何优雅换行 -->
+                <!-- 无 -->
+                <!-- 三个元素需要并列  -->
+                <!-- 无，默认 -->
+                <!-- display设置为flex之后button被拉长了
+                 想到的办法     align-items: flex-start;-->
+                 <!-- 视频中没用flex -->
+                <h1>Discover the world’s top designers & creatives</h1>
+                <p>Dribbble is the leading destination to find &
+                    showcase creative work and home to the world's best design professionals.</p>
+                <a href="#" class="button">Sign up</a></a>
+            </div>
+            <div class="right">
+                <!-- 不用a包img的写法，会不会有新的写法 
+                 如何限制图片大小-->
+                    <!-- 直接写在img上 -->
+                 <div class="img">
+                    <img src="./image/banner-image.webp">
+                </div>
+                <p class="writer">Art by Romain Briaux</p>
+            </div>
+        </div>
+    </banner>
+    <!-- 这个100%是什么时候拉的 背景涂灰的方法-->
+    <!-- wrapper中 -->
+    <section class="filter ">
+        <div class="wrapper layout">
+            <div class="dropdown">
+                <!-- 视频中a标签和图标是怎么配合的 -->
+                <!-- 隐藏和显示是怎么实现的现在只知道display:none -->
+                <!-- 在父元素上加hover 子元素display -->
+                <div class="dropdown-button">
+                    <a href="#">Popular</a>
+                    <span class="iconfont icon-sanjiaoxing"></span>
+                </div>
+                <!-- 用来接鼠标滑动的 -->
+                <div class="blank"></div>
+                <ul>
+                    <li><a href="#" class="popular">Popular</a></li>
+                    <li><a href="#">New & Noteworthy</a></li>
+                    <!-- 这个横线在视频里是怎么画的 -->
+                    <!-- border-top -->
+                    <div class="line"></div>
+                    <li><a href="#">Goods for Sale</a></li>
+                </ul>
+            </div>
+            <ul class="list">
+                <li><a href="#">All</a></li>
+                <li><a href="#">Animation</a></li>
+                <li><a href="#">Branding</a></li>
+                <li><a href="#">Illustration</a></li>
+                <li><a href="#">Mobile</a></li>
+                <li><a href="#">Print</a></li>
+                <li><a href="#">Product Design</a></li>
+                <li><a href="#">Typography</a></li>
+                <li><a href="#">Web Design</a></li>
+            </ul>
+            <div class="filter-button">
+                <a href="#"><span class="iconfont icon-filter"></span>Filters</a>
+            </div>
+        </div>
+    </section>
+    <main>
+        <div class="item">
+            <div class="pic">
+                <!-- 这里可以在img上放用object-fit:cover裁剪图片 -->
+                <img src="./image/pot.webp">
+                <a href="#">
+                    <span class="iconfont icon-box"></span>
+                </a>
+                <div class="content">
+                    <p>Art Work Website</p>
+                    <div class="icon">
+                        <span class="iconfont icon-folder-add"></span>
+                        <span class="iconfont icon-likefill"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="left">
+                    <div class="avator">
+                        <img src="./image/avator.webp" alt="avator">
+                    </div>
+                    <div class="name">Sajon</div>
+                    <div class="pro">PRO</div>
+                </div>
+                <div class="right">
+                    <span class="iconfont icon-likefill"></span>
+                    <p>166</p>
+                    <span class="iconfont icon-eye"></span>
+                    <p>13.7k</p>
+                </div>
+            </div>
+        </div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

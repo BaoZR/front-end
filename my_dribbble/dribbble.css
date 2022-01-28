@@ -1,0 +1,372 @@
+/* common */
+*{
+    padding:0;
+    margin:0;
+    color: #6e6d7a;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+.button{
+    font-weight: bold;
+    line-height: 20px;
+    padding:10px 16px;
+    background-color: #ea4c89;
+    color:white;
+    border-radius: 8px;
+}
+
+.layout{
+    width: 100%;
+}
+
+/*header*/
+.head{
+    display: flex;
+    align-items: center;
+    height: 80px;
+    margin: 0 35px;
+}
+
+.head .logo{
+
+    margin-right: 20px;
+}
+
+.head .logo  img {/* 怎么加入一张图片并控制大小出来*/
+    width: 76px;
+    background-image: url(./image/logo.png);
+}
+
+/*怎么把ul li 横过来*/
+.head ul{
+    display: flex;
+    font-weight: bold;
+}
+
+.head ul li{
+    margin: 0 10px;
+}
+
+.head .right{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-left: auto;
+}
+
+.head .right .icon-search{
+    margin-right: 10px;
+}
+
+.head .right .sign_in{
+    margin: 0 6px;
+}
+
+.head .right .sign_up{
+    margin: 0 6px;
+}
+
+.head .right .button{
+    margin:0 10px;
+}
+.banner{
+    
+    display: flex;
+    align-items: center;
+    height: 480px;
+    padding: 0 40px;
+    background-color: #F9F8FD;
+}
+
+.banner .wrapper{
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    margin:0 auto;
+}
+
+.banner .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 624px;
+}
+
+.banner .text h1{
+    font-size: 32px;
+    color: black;
+}
+
+.banner .text p{
+    line-height: 28px;
+    margin: 16px 0;
+}
+
+.banner .text .banner{
+    margin-right: auto;
+}
+
+.banner .right{
+    margin-left: auto;
+}
+
+.banner .right img{
+    width:360px;
+}
+
+.banner .right .writer{
+    text-align: right;
+}
+
+.filter{
+    box-sizing: border-box;
+    display: flex;
+    padding: 0 72px;
+    padding-top: 32px;
+    padding-right: 40px;
+    color: rgba(255,255,255,0.85);
+    font-weight: normal;
+}
+
+.filter .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.filter .wrapper .dropdown{
+    position:relative;
+}
+
+.filter .wrapper .dropdown-button{
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.filter .wrapper .dropdown-button a{
+    margin-right: 20px;
+}
+
+/*下拉框要贴的紧点，不然点不到下拉框*/
+.filter .wrapper .dropdown:hover ul{
+    display: block;
+}
+/* 用来接鼠标滑动的 */
+.filter .wrapper .dropdown .blank{
+    position: absolute;
+    top:40px;
+    width:200px;
+    height:10px;
+    
+}
+
+.filter .wrapper .dropdown ul{
+    position:absolute;
+    top: 50px;
+    padding:10px 0;
+    border: 1px solid rgba(0,0,0, 0.05);
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.85);
+    z-index: 50;
+    display: none;
+}
+
+
+.filter .wrapper .dropdown  .line{
+    border-top: 1px solid #e7e7e9;
+    margin: 5px 0;
+}
+
+.filter .wrapper .dropdown  ul li{
+    padding:8px 15px;
+    width: 180px;
+    color: rgba(255,255,255,0.85);
+}
+
+.filter .wrapper .dropdown  ul li .popular{
+    color:#ea4c89;
+}
+
+
+.filter .wrapper .list{
+    display: flex;
+    align-items: center;
+}
+
+.filter .wrapper .list li{
+    display: flex;
+}
+
+.filter .wrapper .list li:nth-child(1){
+    background-color: rgb(243,243,243);
+    border-radius: 12px;
+}
+
+.filter .wrapper .list li:nth-child(1) a{
+    color:black;
+}
+
+
+.filter .wrapper .list li a{
+    padding:10px 12px;
+}
+
+.filter .wrapper .filter-button{
+    display: flex;
+    border:1px solid #97979e;
+    border-radius: 5px;
+}
+
+.filter .wrapper .filter-button a{
+    padding:10px 16px;
+}
+
+.filter .wrapper .filter-button a span{
+    margin-right: 10px;
+}
+
+main{
+    padding:32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+main .item{
+    width:30%;
+    /* border:1px solid red; */
+}
+
+main .item .pic{
+    position:relative;
+    /* 这里不知道为什么图片和DIV没有对上*/
+    /* img默认是行内元素 */
+    display: block   ;
+
+    /* border:1px solid red; */
+}
+
+main .item img{
+    display: block;
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    /* border:1px solid brown; */
+   
+}
+/*这个icon在视频里是怎么定位的*/
+/* 也是absolute定位 */
+main .item a{
+    position:absolute;
+    right: 12px;
+    top:10px;
+}
+
+/* 由于本身是文字，可以用font-size改大小 */
+main .item .pic > a .icon-box{
+   font-size: 40px; 
+}
+
+/*怎么做到放在图片上a标签消失的*/
+/* hover放父元素上 */
+main .item:hover a{
+    display: none;
+}
+
+main .item .pic .content{
+    position:absolute;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    bottom: 0px;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.7); 
+    box-shadow: inset 0px 10px 10px  rgba(255,255,255,0.7);
+    display: flex;
+    /* display: none; */
+    /* display:none 和opacity:0 冲突 */
+    opacity: 0;
+    transition: opacity .9s;
+}
+
+main .item .pic:hover .content{
+    display: flex;
+    opacity: 1;
+}
+main .item .pic .content p{
+    font-weight: bold;
+    margin-left: 25px;
+    color: rgba(255,255,255, 0.75);
+}
+
+/*width 和height为什么设置了没用*/
+/*图标文字怎么居中*/
+/*设置padding*/
+/*本身是文本还可以设置text-align right*/
+main .item .pic .content span{
+    box-sizing: border-box;
+    padding:5px;
+    background-color: rgba(255,255,255,0.85);
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+main .item .info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+main .item .info .left{
+    display: flex;
+    align-items: center;
+}
+/*可不可以不这么写，看下视频是怎么写的 */
+main .item .info .left .avator img{
+    width:24px;
+    height:24px;
+    border-radius: 50%;
+}
+
+main .item .info .left  .name{
+    margin-left: 10px;
+}
+
+main .item .info .left .pro{
+    box-sizing: border-box;
+    padding: 2px 5px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.2);
+    color: rgba(255,255,255,0.85);
+
+}
+
+main .item .right{
+    display: flex;
+    align-items: center;
+}
+
+main .item .right span{
+    margin-left: 10px;
+}
+
+main .item .right p{
+    margin-left: 5px;
+}
+
+
+
+
+
