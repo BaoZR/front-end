@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<script>
+		//空数组声明,如
+		console.log(Array(8))
+		//空的类数组声明,如
+		console.log({length:8})
+		//填充数组Array.prototype.fill()
+		console.log(Array(8).fill(5))
+		//Array.from()静态方法，将类似数组的对象
+		//array-like object）和可遍历（iterable）
+		//的对象转为真正的数组
+		console.log(Array.from({length:8},(_,i) => Array(i+1).fill(i+1)))
+		
+		//所谓类似数组的对象，本质特征只有一点，
+		//即必须有length属性。因此，任何有length属性的对象，
+		//都可以通过Array.from方法转为数组，
+		//而此时扩展运算符就无法转换。
+		
+		
+		//Array.prototype.slice()
+		//slice() 方法返回一个新的数组对象，
+		//这一对象是一个由 begin 和 end 决定的原数组的浅拷贝
+		//（包括 begin，不包括end）。
+		//原始数组不会被改变。
+		
+	</script>
+	
+</body>
+</html>

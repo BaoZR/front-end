@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*JavaScript 是一种动态类型语言,变量类型没法在编译阶段就知道，
+			必须等到运行时才能知道。*/
+			//1.强转
+			//1.1 Number() 对比 parseInt()
+			console.log(Number(undefined))//NAN
+			console.log(Number(null))//0
+			console.log(Number({}))//NAN 所有对象NAN
+			console.log(Number([5]))//5 特例 单个数值的数组
+			
+		</script>
+	</body>
+</html>
