@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+<!--  -->
+<body>
+    <div id="app">
+        <div    class="default"  
+            :class="classObject">
+        </div>
+    </div>
+
+    <script>
+        const styleBinding = {
+            data(){
+                return{
+                    isActive:true,
+                }
+            },
+            computed:{
+                classObject(){
+                    return{
+                        active:this.isActive
+                    }
+                }
+            }
+        }
+
+        Vue.createApp(styleBinding).mount("#app")
+    </script>
+
+    <style>
+        .default {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</body>
+
+</html>

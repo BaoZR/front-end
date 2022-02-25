@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="example">
+        <div class="static" 
+        :class="{active:isActive}"></div>
+    </div>
+        
+
+    <script>
+        const ActiveClass = {
+            data() {
+                return {
+                    isActive: true,
+                }
+            }
+        }
+
+        Vue.createApp(ActiveClass).mount('#example')
+    </script>
+
+    <style>
+        .static{
+            width: 300px;
+            height:300px;
+            background-color: green;
+        }
+        .active{
+            background-color: red;
+        }
+    </style>
+
+</body>
+
+</html>

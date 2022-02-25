@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <!-- 渲染一个列表 -->
+    <div id="list-rendering">
+        
+        <todo-item
+            v-for = "item in groceryList"
+            v-bind:todo = "item"
+            v-bind:key = "item.id"
+        ></todo-item>
+    </div>
+
+    <script>
+        const TodoItem = {
+            props:['todo'],
+            template:`<li>{{todo.text}}</li>`
+        }
+
+        const ListRendering = {
+            data(){
+                return{
+                    groceryList:[
+                        {id:0, text:'aaaaa'},
+                        {id:1, text:'bbbbb'},
+                        {id:2, text:'ccccc'}
+                    ]
+                }
+            },
+            components:{
+                TodoItem
+            }
+        }
+
+        Vue.createApp(ListRendering).mount('#list-rendering')
+    </script>
+
+</body>
+</html>

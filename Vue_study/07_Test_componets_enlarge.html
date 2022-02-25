@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+
+<!-- 父组件通过props向子组件传值，子组件通过事件向向父组件传值 -->
+<body>
+    <div id="app">
+        <div :style="{fontSize:postFontSize + 'em'}">
+            <enlarge-text v-on:enlarge-text="postFontSize += $event"
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post">
+            </enlarge-text>
+        </div>
+    </div>
+
+    <!-- $emit('事件名'，参数) -->
+    <script>
+        Vue.component('enlarge-text', {
+            props: ['post'],
+            template: `
+            <div class= "enlarge-text">
+                <h3>{{post.title}}<h3/>
+                <button v-on:click="$emit('enlarge-text')">
+                    Enlarge text
+                </button>
+                <div v-html="post.content"></div>
+            </div>
+            `
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                posts: [
+                    {title:'1',content:'hello world'},
+                    {title:'1',content:'hello vue'}
+                ],
+                postFontSize: 1,
+            }
+        })
+    </script>
+</body>
+
+</html>
