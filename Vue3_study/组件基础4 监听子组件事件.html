@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<!--放大字体 -->
+
+<body>
+
+    <div id="blogDemo">
+        <div :style="{fontSize:postFontSize + 'em'}">
+            <text-component 
+                @enlarge-text="postFontSize+=0.1" 
+                v-for="post in posts" 
+                :title="post.title"
+                :id="post.id">
+            </text-component>
+        </div>
+    </div>
+
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    posts: [
+                        { id: '1', title: 'bob' },
+                        { id: '2', title: 'alice' },
+                        { id: '3', title: 'jack' },
+                    ],
+                    postFontSize: 1
+                }
+            }
+        }
+
+        Vue.createApp(App).component('text-component', {
+            props: ['title', 'id'],
+            // 这里加了一个声明自定义事件
+            emits: ['enlargeText'],
+            template: `
+                <p>{{id}}--{{title}}</p>
+                <button @click="$emit('enlargeText')">
+                    enlarge text
+                </button>
+            `
+        }).mount("#blogDemo")
+
+
+    </script>
+</body>
+
+</html>

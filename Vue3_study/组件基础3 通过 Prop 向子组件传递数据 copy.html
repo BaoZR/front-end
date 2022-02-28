@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<!-- 将博客题目渲染到组件上 -->
+<body>
+
+    <div id="blogDemo">
+        <blog-item
+            v-for="item in posts" :title="item.title" :id="item.id"
+        ></blog-item>
+
+    </div>
+
+
+    <script>
+        // 有一个const带着点数据,有一个component,挂载到组件上。
+        const App = {
+            data(){
+                return{
+                    posts:[
+                        {id:1,title:'abc'},
+                        {id:2,title:'xyz'},
+                        {id:3,title:'opq'},
+                    ]
+                }
+            }
+        };
+
+
+        const app = Vue.createApp(App)
+
+        app.component('blog-item',{
+            props:['title','id'],
+            template:`
+                <p>blog-title:{{id}}:{{title}}</p>
+            `
+        }).mount("#blogDemo")
+    </script>
+</body>
+</html>

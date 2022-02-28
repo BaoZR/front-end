@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- //按下button 数字加一  
+        v-on 监听事件 @ 简写    
+    -->
+    <div id="app">
+        <button @click="add">点我</button>
+        <button @click="counter++">点我</button>
+        <button @click.once="counter++">只能点一次</button>
+        <input @keyup.enter="counter++" placeholder="按下回车也能加"></input>
+        <p>点了几次-{{counter}}-</p>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    counter:0
+                }
+            },
+            methods:{
+                add(event){
+                    this.counter++;
+                    alert(event.target.tagName)
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>

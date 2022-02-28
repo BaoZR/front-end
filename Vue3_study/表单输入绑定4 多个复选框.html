@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="v-model-checked">
+        <input type="checkbox" id="Jack" value="Jack" v-model="names"/>
+        <label for="jack">jack</label>
+        <input type="checkbox" id="bob" value="bob" v-model="names"/>
+        <label for="bob">bob</label>
+        <input type="checkbox" id="nancy" value="nancy" v-model="names"/>
+        <label for="nancy">nancy</label>
+        <p>{{names}}</p>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    names:[]
+                }
+            }
+        }).mount("#v-model-checked")
+    </script>
+
+</body>
+</html>
