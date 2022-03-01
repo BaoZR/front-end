@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<!-- 使用 <slot> 作为我们想要插入内容的占位符 -->
+<body>
+    <div id="slot-demo">
+        <alert-demo>
+            hello world
+        </alert-demo>
+    </div>
+
+    <script>
+        const app = Vue.createApp({})
+        
+        app.component('alert-demo',{
+            template:`
+                <div class="demo-alert-box">
+                    <strong>oooo</strong>
+                    <slot></slot>
+                </div>
+            `
+        })
+
+        app.mount("#slot-demo");
+    </script>
+
+    <style>
+        .demo-alert-box{
+            background-color:ghostwhite;
+            color: green;
+        }
+    </style>
+</body>
+
+</html>
