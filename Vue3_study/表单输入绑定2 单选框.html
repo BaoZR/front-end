@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="v-model-picked">
+        <input type="radio" id="one" value="one" v-model="checked">
+        <label for="radio">one</label>
+        <input type="radio" id="two" value="two" v-model="checked">
+        <label for="radio">two</label>
+        <p>{{checked}}</p>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    checked:''
+                }
+            }
+        }).mount("#v-model-picked")
+    </script>
+
+</body>
+</html>

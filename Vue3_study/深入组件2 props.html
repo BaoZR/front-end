@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- 以字符串数组形式列出的 prop之外，还有对象形式的prop -->
+    <!--静态赋值| <blog-post title="My journey with Vue"></blog-post> -->
+    <!--动态赋值| 通过 v-bind 或简写 :  <blog-post :title="post.title"></blog-post> -->
+    <!--告诉Vue 这是一个 JavaScript 表达式而不是一个字符串 -->
+
+    <!-- 传入 数字 布尔 数组 对象 对象属性 -->
+    <!-- 博客的例子 -->
+
+    <div id="demo">
+        <component-a :title="title" :like="like" v-bind:is-published="true"></component-a>
+        <component-a :title="title" :like="like" :is-published="isPublished"></component-a>
+        <component-a :title="title" :like="like" :is-published=true  ></component-a>
+    </div>
+
+    <script>
+
+
+        const componentA = {
+            props: {
+                title: String,
+                like: Number,
+                isPublished: Boolean,
+            },
+            template: `
+            <div>
+                <div>{{title}}</div>
+                <div>{{like}}</div>
+            </div>
+            `
+        }
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    title:'111',
+                    like:7,
+                    isPublished:true,
+                }
+            },
+            components: {
+                'component-a': componentA
+            }
+        })
+
+
+        app.mount("#demo")
+    </script>
+
+</body>
+
+</html>
