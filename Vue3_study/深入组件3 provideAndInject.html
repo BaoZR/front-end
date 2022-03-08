@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<!-- 使用 <slot> 作为我们想要插入内容的占位符 -->
+<body>
+    <div id="slot-demo">
+        <todo-list>
+            <todo-list-statistics></todo-list-statistics>
+        </todo-list>
+    </div>
+
+    <script>
+        const app = Vue.createApp({});
+
+        app.component('todo-list',{
+            data(){
+                return {
+                    todos:['feed a cat','buy tickets']
+                }
+            },
+            provide:{
+                user:'Jone Doe'
+            },
+            template:`
+            <div>
+                {{todos.length}}
+                <slot></slot>
+            </div>
+            `
+        })
+
+        app.component('todo-list-statistics',{
+            inject:['user'],
+            data(){
+                return{
+                    nickname:this.user.split(' ')[0]
+                }
+            },
+            created(){
+                // console.log(`Injected property:${this.user}`)//注入的property:john Doe
+            },
+            template:`
+                <div>{{nickname}}</div>
+            `
+        })
+
+        app.mount("#slot-demo");
+    </script>
+
+    <style>
+        .demo-alert-box{
+            background-color:ghostwhite;
+            color: green;
+        }
+    </style>
+</body>
+
+</html>

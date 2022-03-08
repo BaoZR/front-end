@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="async-demo">
+        <async-div></async-div>
+    </div>
+
+    <script>
+
+
+        const app = Vue.createApp({})
+        
+        const AsyncComp = Vue.defineAsyncComponent(
+            ()=>{
+                return new Promise((resolve, reject)=>{
+                    resolve({
+                        template:`<div>I am async</div>`
+                    })
+                })
+            }
+        )
+
+        app.component('async-div',AsyncComp)
+        app.mount("#async-demo")
+    </script>
+
+    <style>
+        
+    </style>
+</body>
+
+</html>
