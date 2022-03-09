@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="mixins">
+        <test-component></test-component>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            myOption:'hello!'
+        })
+
+        app.mixin({
+            created(){
+                const myOption = this.$options.myOption
+                if(myOption){
+                    console.log(myOption)
+                }
+            }
+        })
+
+        app.component('test-component',{
+            myOption:'hello from component',
+            template:'<div></div>'
+        })
+        app.mount("#mixins")
+
+    </script>
+
+
+</body>
+
+</html>
