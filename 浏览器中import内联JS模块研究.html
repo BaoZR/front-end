@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- ES Modules有个局限性，
+    就是它在浏览器里能够import指定URL的模块化JS代码，
+    但是不能import自身HTML文件里的模块 -->
+<body>
+    <div id="box">
+        <button>{{num}}</button>
+    </div>
+
+
+
+    <script type="module">
+        import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        createApp({
+            data(){
+                return{
+                    num:5
+                }
+            }
+        }).mount("#box")
+    </script>
+</body>
+
+</html>
