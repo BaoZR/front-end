@@ -1,0 +1,1 @@
+node web.js 要在 web文件夹下使用，不然找不到views

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跨域演示</title>
+</head>
+
+<body>
+    跨域演示
+    <button id="btn">点我发起ajax请求</button>
+    <h1 id="main"></h1>
+    <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+
+</body>
+<script>
+    $(function () {
+        $('#btn').on('click', function () {
+            $.ajax({
+                //url: 'http://localhost:9999/getData', // 如果直接访问接口就会产生跨域，报错 (Access to XMLHttpRequest at 'http://localhost:9527/getData' from origin 'http://0.0.0.0:8080' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.)
+                url: '/api/getData', // '/api' 跨代理的标识，在 webpack.config.js 中配置
+                success: function (res) {
+                    $('#main').text(res.data)
+                }
+            });
+        });
+    });
+
+</script>
+
+</html>
