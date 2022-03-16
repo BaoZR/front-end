@@ -2,3 +2,6 @@
 ## Folders                  ##
 ##############################
 express/*
+express/
+nodejs/node_modules/*
+nodejs/*
