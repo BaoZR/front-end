@@ -13,7 +13,7 @@
     <iframe id="editor" src="about:blank"></iframe>
     <div class="myclass1"></div>
     <div class="myclass2"></div>
-    <div id = "div1"></div>
+    <div id="div1"></div>
     <script>
         //Document 节点
         //1. 概述
@@ -33,37 +33,37 @@
         //document.embeds，document.plugins
         //document.scripts
         //document.styleSheets
-        document.myForm === document.forms.myForm//能直接引用
-        //2.3 文档静态信息属性
-        //document.documentURI
-        //document.URI
-        //document.domain
-        //document.location
-        //document.lastModified
-        //document.title
-        //document.characterSet
-        //document.referrer
-        //document.dir
-        //document.compatMode
-        //2.4 文档状态属性
-        //document.hidden
-        //document.visibilityState
-        //document.readyState
-        // 基本检查
+        document.myForm === document.forms.myForm //能直接引用
+            //2.3 文档静态信息属性
+            //document.documentURI
+            //document.URI
+            //document.domain
+            //document.location
+            //document.lastModified
+            //document.title
+            //document.characterSet
+            //document.referrer//返回的是一个 URI, 当前页面就是从这个 URI 所代表的页面 跳转或打开的
+            //document.dir
+            //document.compatMode
+            //2.4 文档状态属性
+            //document.hidden
+            //document.visibilityState
+            //document.readyState
+            // 基本检查
         if (document.readyState === 'complete') {
             console.log("加载完成")
         }
 
         // 轮询检查
-        var interval = setInterval(function () {
+        var interval = setInterval(function() {
             if (document.readyState === 'complete') {
                 clearInterval(interval);
                 console.log("加载完成")
-            }else{
+            } else {
                 console.log("没加载完成")
             }
         }, 100);
-        
+
         //2.5 document.cookie
         //2.6 document.designMode
         var editor = document.getElementById('editor')

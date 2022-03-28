@@ -10,11 +10,15 @@
 
 <body>
     <script>
+        var a = ['a', null, 'b'];
 
-        const str = '123'
-        console.log(str[-2])
-        
+        function print(i) {
+            console.log(i);
+        }
+
+        a.forEach(item => print(item))
     </script>
+
 </body>
 
 </html>
