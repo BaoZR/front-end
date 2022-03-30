@@ -11,25 +11,27 @@
 
 <body>
     <div id="slot-demo">
+        <!-- count，访问环境作用域，不访问todo-button作用域 -->
         <!-- //4 -->
         <todo-button>{{count}}</todo-button>
     </div>
 
     <script>
-
         const app = Vue.createApp({
             data() {
-                return { count: 4 }
+                return {
+                    count: 4
+                }
             }
         })
 
-        app.component('todo-button',{
-            data(){
-                return{
+        app.component('todo-button', {
+            data() {
+                return {
                     count: 5
                 }
             },
-            template:`
+            template: `
                     <button>
                         <slot></slot>
                     </button>

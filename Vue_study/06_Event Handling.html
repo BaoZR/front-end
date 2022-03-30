@@ -13,11 +13,13 @@
     <div id="example">
         <button v-on:click="count++">add</button>
         <p>hello {{count}}</p>
-        
+
         <!-- 在 `methods` 对象中定义方法 -->
         <button v-on:click="greet">greet</button>
 
+
         <!-- 内联 JavaScript 语句 -->
+        <!-- 调用方法 -->
         <button style="display:block" v-on:click="say('hi')">say hi</button>
         <button style="display:block" v-on:click="say('hello')">say hello</button>
 
@@ -34,16 +36,16 @@
                 name: 'hello js'
             },
             methods: {
-                greet: function (event) {
+                greet: function(event) {
                     alert('Hello' + this.name + '!');
                     if (event) {
                         alert(event.target.tagName)
                     }
                 },
-                say: function (message) {
+                say: function(message) {
                     alert(message)
                 },
-                warn: function (message, event) {
+                warn: function(message, event) {
                     if (event) {
                         event.preventDefault()
                     }

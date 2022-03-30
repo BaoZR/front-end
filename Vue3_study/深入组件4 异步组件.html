@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- 在大型应用中，我们可能需要将应用分割成小一些的代码块，并且只在需要的时候才从服务器加载一个模块。
+    为了实现这个效果，Vue 有一个 defineAsyncComponent 方法 -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,26 +18,24 @@
     </div>
 
     <script>
-
-
         const app = Vue.createApp({})
-        
+
         const AsyncComp = Vue.defineAsyncComponent(
-            ()=>{
-                return new Promise((resolve, reject)=>{
+            () => {
+                return new Promise((resolve, reject) => {
                     resolve({
-                        template:`<div>I am async</div>`
+                        template: `<div>I am async</div>`
                     })
                 })
             }
         )
 
-        app.component('async-div',AsyncComp)
+        app.component('async-div', AsyncComp)
         app.mount("#async-demo")
     </script>
 
     <style>
-        
+
     </style>
 </body>
 

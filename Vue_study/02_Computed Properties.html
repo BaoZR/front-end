@@ -16,17 +16,22 @@
         <p>reversed message two:{{reversedMessageTwo()}}</p>
     </div>
 </body>
+<!-- methods一般运用在需要主动触发的事件上，computed则是用在响应对某个数据的处理上。 -->
+<!-- methods 执行函数，vue 每次都要重新执行一次函数，不管message 的值是否有变化 -->
+<!-- computed 有缓存， 如果使用computed 执行函数，只有当message 这个最初的数据发生变化时，函数才会被执行 -->
 <script>
     var vm = new Vue({
         el: '#example',
-        data: { message: 'hello' },
+        data: {
+            message: 'hello'
+        },
         computed: {
-            reversedMessage: function () {
+            reversedMessage: function() {
                 return this.message.split('').reverse().join('')
             }
         },
         methods: {
-            reversedMessageTwo: function () {
+            reversedMessageTwo: function() {
                 return this.message.split('').reverse().join('')
             }
         }
