@@ -1,0 +1,61 @@
+<!-- store 模式 -->
+<!-- 集中式状态管理能够被更容易地理解哪种类型的变更将会发生，
+    以及它们是如何被触发。当错误出现时，
+    现在也会有一个 log 记录 bug 之前发生了什么。 -->
+<script type="importmap">
+    { "imports": { "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js" } }
+</script>
+
+<div id="app-a">App A:{{sharedState.message}}</div>
+<div id="app-b">App B:{{sharedState.message}}</div>
+
+<script type="module">
+    import { createApp, reactive } from 'vue';
+
+    const store = {
+        debug: true,
+
+        state: reactive({
+            message: 'hello'
+        }),
+
+        setMessageAction(newValue) {
+            if (this.debug) {
+                console.log('setMessageAction triggered with', newValue)
+            }
+
+            this.state.message = newValue
+        },
+
+        clearMessageAction() {
+            if (this.debug) {
+                console.log('clearMessageAction triggered')
+            }
+
+            this.state.message = ''
+        }
+    }
+
+
+    const appA = createApp({
+        data() {
+            return {
+                //还只能这么写，不能写 message = store.state.message
+                //只有state是动态更新的，message不是
+                sharedState: store.state
+            }
+        },
+        mounted() {
+            store.setMessageAction('Goodbye!')
+        }
+    }).mount('#app-a')
+
+    const appB = createApp({
+        data() {
+            return {
+                sharedState: store.state
+            }
+        }
+    }).mount('#app-b')
+
+</script>

@@ -9,6 +9,7 @@ debug-demo
 /webpack_study/webpack5-demo/node_modules/*
 nodejs_forward/server/node_modules/*
 webpack_study/1/node_modules/*
+vuex/node_modules/*
 
 
 
