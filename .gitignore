@@ -12,4 +12,7 @@ webpack_study/1/node_modules/*
 vuex/node_modules/*
 Vue3_study_Composition/node_modules/*
 Vue3_study_options/node_modules/*
-
+Vue3_cli_sgg/node_modules/*
+vue_cli_sgg/demo/node_modules/@achrinza/node-ipc/.gitattributes
+vue_cli_sgg/.gitignore
+.gitignore
