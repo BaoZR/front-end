@@ -13,6 +13,20 @@
     margin: auto;
 }
 
+.container .item-btn{
+    padding:1px 5px;
+    border-radius: 3px;
+    border:1px solid #f7f7f7;
+}
+
+.container .item-btn-delete{
+    background-color: #e17055;
+}
+
+.container .item-btn-edit{
+    background-color: lightskyblue;
+}
+
 /* head */
 .header-input{
     border: 1px solid #d1d1d1;
@@ -46,14 +60,35 @@ main .item{
     justify-content: space-between;
 }
 
+
+
 main .item .item-left{
     display: flex;
     align-items: center;
 }
 
+main .item .item-right{
+    border:none;
+}
+
 main .item .item-left .label{
     margin-left: 5px;
 }
+
+/* show hidden */
+main .item .item-btn{
+    visibility:hidden;
+}
+
+main .item:hover{
+    background-color: #dfe6e9;
+}
+
+main .item:hover .item-btn{
+    visibility:visible;
+}
+
+
 
 /*footer*/
 footer {
