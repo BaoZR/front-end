@@ -2,7 +2,7 @@
   <div class="container">
     <my-header v-on:addItem="addItem" />
     <my-list :todoList="todoList" v-on:deleteItem="deleteItem" />
-    <my-foot />
+    <my-foot :todoList="todoList" v-on:changeAllCheck="changeAllCheck"/>
   </div>
 </template>
 
@@ -28,14 +28,15 @@ export default {
     };
   },
   methods: {
+    //添加item信息
     addItem: function (value) {
       let maxId = Math.max(...this.todoList.map(item => item.id)) ;
-      console.log(maxId,"获取的值");  
+      //console.log(maxId,"获取的值");  
       // eslint-disable-next-line no-undef
       if(!Number.isInteger(maxId)){//如果list为空
         maxId = 0;
       } 
-      console.log(maxId,"待计算的值");  
+      //console.log(maxId,"待计算的值");  
       const item = {
         id: ("000" + (++maxId)).slice(-3),
         title: value,
@@ -46,13 +47,25 @@ export default {
     deleteItem:function(id){
       // console.log(id,'接收到的id是');
       this.todoList = this.todoList.filter(item => item.id !== id);
+    },
+    changeCheck(id){
+      console.log("changecheck")
+      this.todoList.forEach(function(item){
+        if(item.id === id) item.done = !item.done
+      })
+    },
+    //全选框改变
+    changeAllCheck(val){
+      this.todoList.forEach(item => item.done = val);
     }
   },
   mounted() {
     this.$bus.$on("deleteItem",this.deleteItem);
+    this.$bus.$on("changeCheck",this.changeCheck);
   },
   beforeDestroy(){
     this.$bus.$off("deleteItem");
+    this.$bus.$off("changeCheck");
   }
 };
 </script>

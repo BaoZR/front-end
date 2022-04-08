@@ -4,7 +4,7 @@
 <template>
   <div class="item">
     <div class="item-left">
-      <input type="checkbox" v-bind:checked="todoObj.done" />
+      <input type="checkbox" v-bind:checked="todoObj.done" @change="handleCheck(todoObj.id)"/>
       <div class="label">{{ todoObj.title }}</div>
     </div>
     <div class="item-right">
@@ -22,6 +22,11 @@ export default {
     deleteItem:function(id){
       this.$bus.$emit("deleteItem",id);
       //console.log("deleteItem",id);
+    },
+    //改变勾选状态，自定义事件
+    handleCheck(id){
+      //console.log("emit",id);
+      this.$bus.$emit("changeCheck",id);
     }
   },
 };
