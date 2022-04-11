@@ -1,0 +1,121 @@
+1.用户点击导航区
+2.引起路径的改变
+3.前端路由检测到，进行路由的匹配
+4.在合适的地方呈现组件
+
+
+路由一组key-value对应关系
+router 路由器
+
+前端路由 value为组件 后端路由
+
+配置对象
+
+编程式路由导航 button video也能作为路由
+插值语法
+加： “”中的内容当成js解析
+``模板字符串 ${} 传入参数
+
+路由配置后有#
+
+导航区 展示区
+
+
+<router-link> to属性 active-class
+会转成a标签
+
+<router-view> 展示
+
+路由组件 普通组件 使用方式
+路由组件放pages
+
+不用的路由组件被销毁 （切换即销毁）
+自己的$route是不一样的
+$router 是只有一个
+
+一级路由 
+多级路由 嵌套路由
+
+一级路由加/ 子路由不加
+
+to属性中要写完整路径
+
+##命名路由
+简化编码
+to中的 path改为name
+
+##路由传参
+#query
+点导航，给路由传递参数
+从$router.query获取参数
+to的字符串写法、对象写法
+
+#params参数
+router中加入占位符
+从$router.params参数获取参数
+不能用path了，只能用name了
+
+##props 声明接收 路由props配置
+简化模板中的内容
+写到计算属性中
+props发，props收
+props写法 1.对象写法2.接收params的写法3.接收query方法，值为函数
+连续解构赋值
+
+##replace
+浏览器历史记录操作模式 栈
+push模式 replace模式
+写法  :replace="true" replace
+支付时用
+
+
+##编程式路由跳转 不见router-link
+this.$router.push 
+back ----- this.$router.back()
+forward.....
+go....
+
+##缓存路由组件
+keep-alive 不销毁了
+父级组件上写
+include=“组件名”
+缓存多个
+
+##新的生命周期钩子 配合active-live
+捕获激活状态
+activated(){}
+deactivated(){}
+
+nextTick 数据加载完再运行 下一轮运行
+
+
+/*路由配置文件 那个index.js文件*/
+
+##路由守卫
+meta 路由元信息
+
+--全局前置路由守卫
+路由切换之前调用
+.beforeEach((to,from,next)=>{})
+
+全局后置路由守卫 
+路由切换之后调用
+afterEach 没有next
+场景：修改document.title
+
+#独享路由守卫
+beforeEnter
+只有前置没有后置
+
+#组件内守卫
+通过路由规则，进入该组件时调用
+beforeRouteEnter
+通过路由规则，离开组件时调用
+beforeRouteEnter
+
+
+##history hash模式
+/#/后的东西不会发给服务器
+connect-history-api-fallback
+
+

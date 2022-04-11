@@ -1,0 +1,51 @@
+1.flex 布局 用法 属性
+2.定位 方式 场景 粘性定位
+3.选择器 类型
+4.clear 清除浮动
+5.head常用标签 meta script title style
+6.script标签有那些属性 defer async
+7.canvas 
+8.元素显示 区别 
+9.元素垂直居中 
+10.盒子模型 使用场景
+11.闭包 为什么使用 什么是闭包 为什么有问题还需要使用
+12.继承 继承方式
+13.原型链 如何访问原型
+14.作用域 let var 变量提升
+15.数据类型 判断方法
+16.数组方法 改变原数组的方法
+17.数组去重
+18.判断数组的方法 
+19.数组循环方法 map forEach for in for of
+20.parseInt 第二个参数
+21.es6有那些新语法
+22.模块化有那些方式，怎么引入怎么导出，有什么区别
+23.垃圾回收
+24.箭头函数 普通函数
+25.map weakmap set weakset
+26.http 1 http1.1  http2
+27.浏览器缓存的过程 强缓存 协商缓存 优先级
+28.http状态码
+29.浏览器的存储 localStorage sessionStorage cookie 使用方法
+30.js css 文件阻塞
+31.浏览器输入url的全过程
+32.tcp udp
+33.队头阻塞
+34.路由 history hash 原理 使用的区别
+35.跨域问题jsonp cros 后端设置字段后 无法携带cookie
+36.vue双向绑定
+37.webpack打包 plugin babel loader 区别和用法
+38.写过plugin吗
+39.手写Ajax，基于promise ajax
+40.手写promise all race
+41.深拷贝
+42.判断数据类型
+43.防抖节流函数
+44.解析url参数
+45.
+
+
+ 
+
+
+
