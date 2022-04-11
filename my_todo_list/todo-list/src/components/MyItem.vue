@@ -7,9 +7,9 @@
       <input type="checkbox" v-bind:checked="todoObj.done" @change="handleCheck(todoObj.id)"/>
       <span v-show="!todoObj.isEditing" class="item-layout">{{ todoObj.title }}</span>
       <input  class="item-layout item-left-input" 
-              type="label" 
+              type="text" 
               v-show="todoObj.isEditing"
-              @keyup.enter="modifyItem(todoObj)"
+              @keyup.enter="modifyItem(todoObj,$event)"
               
               :value="todoObj.title"
               />
@@ -36,8 +36,8 @@ export default {
       this.$bus.$emit("changeCheck",id);
     },
     //need study
-    modifyItem(e){
-      console.log(e.title);
+    modifyItem(obj,e){
+      console.log(e.id,e.target.value);
     }
   },
 };
