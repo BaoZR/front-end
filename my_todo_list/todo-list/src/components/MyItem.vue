@@ -5,7 +5,14 @@
   <div class="item">
     <div class="item-left">
       <input type="checkbox" v-bind:checked="todoObj.done" @change="handleCheck(todoObj.id)"/>
-      <div class="label">{{ todoObj.title }}</div>
+      <span v-show="!todoObj.isEditing" class="item-layout">{{ todoObj.title }}</span>
+      <input  class="item-layout item-left-input" 
+              type="label" 
+              v-show="todoObj.isEditing"
+              @keyup.enter="modifyItem(todoObj)"
+              
+              :value="todoObj.title"
+              />
     </div>
     <div class="item-right">
       <button class="item-btn item-btn-edit">编辑</button>
@@ -27,6 +34,9 @@ export default {
     handleCheck(id){
       //console.log("emit",id);
       this.$bus.$emit("changeCheck",id);
+    },
+    modifyItem(e){
+      console.log(e.title);
     }
   },
 };
@@ -52,8 +62,12 @@ export default {
   border: none;
 }
 
-.item .item-left .label {
+.item .item-left .item-layout {
   margin-left: 5px;
+}
+
+.item .item-left .item-left-input{
+  font-size: 16px;
 }
 
 .item .item-btn {
