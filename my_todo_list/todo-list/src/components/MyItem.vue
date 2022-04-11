@@ -35,6 +35,7 @@ export default {
       //console.log("emit",id);
       this.$bus.$emit("changeCheck",id);
     },
+    //need study
     modifyItem(e){
       console.log(e.title);
     }

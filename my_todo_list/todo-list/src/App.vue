@@ -2,7 +2,9 @@
   <div class="container">
     <my-header v-on:addItem="addItem" />
     <my-list :todoList="todoList" v-on:deleteItem="deleteItem" />
-    <my-foot :todoList="todoList" v-on:changeAllCheck="changeAllCheck"/>
+    <my-foot :todoList="todoList" 
+              v-on:changeAllCheck="changeAllCheck" 
+              v-on:deleteCheckedItem="deleteCheckedItem"/>
   </div>
 </template>
 
@@ -21,9 +23,9 @@ export default {
   data() {
     return {
       todoList: [
-        { id: "001", title: "苹果", done: true },
-        { id: "002", title: "香蕉", done: false },
-        { id: "003", title: "西瓜", done: true },
+        { id: "001", title: "苹果", done: true ,isEditing:true},
+        { id: "002", title: "香蕉", done: false ,isEditing:false},
+        { id: "003", title: "西瓜", done: true ,isEditing:false},
       ],
     };
   },
@@ -41,6 +43,7 @@ export default {
         id: ("000" + (++maxId)).slice(-3),
         title: value,
         done: false,
+        isEditing:false,
       };
       this.todoList.unshift(item);
     },
@@ -49,10 +52,14 @@ export default {
       this.todoList = this.todoList.filter(item => item.id !== id);
     },
     changeCheck(id){
-      console.log("changecheck")
+      //console.log("changecheck")
       this.todoList.forEach(function(item){
         if(item.id === id) item.done = !item.done
       })
+    },
+    //删除已完成的任务
+    deleteCheckedItem(){
+      this.todoList = this.todoList.filter(item => item.done === false)
     },
     //全选框改变
     changeAllCheck(val){

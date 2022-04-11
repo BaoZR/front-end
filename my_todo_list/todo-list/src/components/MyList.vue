@@ -17,14 +17,6 @@ export default {
   name:'MyList',
   components: { MyItem },
   props:['todoList'],
-  data() {
-      return {
-          
-      }
-  },
-  methods: {
-
-  },
 };
 </script>
 

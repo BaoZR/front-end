@@ -20,7 +20,12 @@ export default {
   methods: {
     addItem:function(){
       if(this.taskName){
-        this.$emit("addItem",this.taskName);
+        //TODO 
+        if(this.taskName.length <= 16){
+          this.$emit("addItem",this.taskName);
+        }else{
+          alert("输入的任务名字长度不超过16个字符")
+        }
       }
     }
   },
