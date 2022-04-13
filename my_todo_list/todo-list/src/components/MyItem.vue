@@ -9,13 +9,14 @@
       <input  class="item-layout item-left-input" 
               type="text" 
               v-show="todoObj.isEditing"
-              @keyup.enter="modifyItem(todoObj,$event)"
-              
+              ref="inputText"
               :value="todoObj.title"
+              @keyup.enter="handleEnter(todoObj,$event)"
+              @blur="handleBlur(todoObj,$event)"
               />
     </div>
     <div class="item-right">
-      <button class="item-btn item-btn-edit">编辑</button>
+      <button class="item-btn item-btn-edit" @click="editItem(todoObj)">编辑</button>
       <button class="item-btn item-btn-delete" @click="deleteItem(todoObj.id)">删除</button>
     </div>
   </div>
@@ -35,9 +36,33 @@ export default {
       //console.log("emit",id);
       this.$bus.$emit("changeCheck",id);
     },
+    handleEnter(todoObj,e){//处理enter键被按下的情况
+      todoObj.isEditing = false;
+      this.updateItem(todoObj.id,e.target.value);
+    },
+    handleBlur(todoObj,e){
+      todoObj.isEditing = false;
+      this.updateItem(todoObj.id,e.target.value);
+    },
     //need study
-    modifyItem(obj,e){
-      console.log(e.id,e.target.value);
+    updateItem(id,val){
+      console.log(id,val);
+      //
+      if(val.length <= 16){
+        this.$bus.$emit("updateItem",id,val);
+      }else{
+        alert("输入的任务名字长度不超过16个字符")
+      }
+    },
+    editItem(obj){
+      if(Object.prototype.hasOwnProperty.call(obj,"isEditing")){
+        obj.isEditing = true;
+      }else{
+        this.$set(obj,"isEditing",true);
+      }
+      this.$nextTick(function(){//等输入框出现后，再聚焦到上面去
+        this.$refs.inputText.focus();
+      })
     }
   },
 };
@@ -47,6 +72,7 @@ export default {
 .item {
   display: flex;
   align-items: center;
+  height: 25px;
   padding: 5px;
   border-bottom: 1px solid #d1d1d1;
   border-left: 1px solid #d1d1d1;

@@ -23,9 +23,9 @@ export default {
   data() {
     return {
       todoList: [
-        { id: "001", title: "苹果", done: true ,isEditing:true},
-        { id: "002", title: "香蕉", done: false ,isEditing:false},
-        { id: "003", title: "西瓜", done: true ,isEditing:false},
+        { id: "001", title: "苹果", done: true },
+        { id: "002", title: "香蕉", done: false },
+        { id: "003", title: "西瓜", done: true },
       ],
     };
   },
@@ -51,6 +51,11 @@ export default {
       // console.log(id,'接收到的id是');
       this.todoList = this.todoList.filter(item => item.id !== id);
     },
+    updateItem:function(id,val){
+      this.todoList.forEach(function(item){
+        if(item.id === id) item.title = val;
+      })
+    },
     changeCheck(id){
       //console.log("changecheck")
       this.todoList.forEach(function(item){
@@ -69,10 +74,12 @@ export default {
   mounted() {
     this.$bus.$on("deleteItem",this.deleteItem);
     this.$bus.$on("changeCheck",this.changeCheck);
+    this.$bus.$on("updateItem",this.updateItem);
   },
   beforeDestroy(){
     this.$bus.$off("deleteItem");
     this.$bus.$off("changeCheck");
+    this.$bus.$off("updateItem");
   }
 };
 </script>

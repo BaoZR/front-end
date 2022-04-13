@@ -10,13 +10,13 @@
 
 <body>
     <script>
-        var a = ['a', null, 'b'];
+        let a = [];
+        ['1', '2', '3'].forEach(function(cur){
+            a.push( +cur )
+        });
 
-        function print(i) {
-            console.log(i);
-        }
+        console.log(a)
 
-        a.forEach(item => print(item))
     </script>
 
 </body>

@@ -15,5 +15,5 @@ Vue3_study_options/node_modules/*
 Vue3_cli_sgg/node_modules/*
 vue_cli_sgg/demo/node_modules/@achrinza/node-ipc/.gitattributes
 vue_cli_sgg/.gitignore
-.gitignore
+
 my_todo_list/todo-list/node_modules/*
