@@ -1,6 +1,10 @@
 <template>
   <div class="todo-footer" v-show="total">
+<<<<<<< HEAD
     <label>ffff
+=======
+    <label>f
+>>>>>>> parent of 8e9adbf... f
       <!-- <input type="checkbox" :checked="isAll" @change="checkAll"/> -->
       <input type="checkbox" v-model="isAll"/>
     </label>
