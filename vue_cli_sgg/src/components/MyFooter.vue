@@ -1,6 +1,6 @@
 <template>
   <div class="todo-footer" v-show="total">
-    <label>f
+    <label>
       <!-- <input type="checkbox" :checked="isAll" @change="checkAll"/> -->
       <input type="checkbox" v-model="isAll"/>
     </label>
