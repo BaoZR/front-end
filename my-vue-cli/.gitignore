@@ -1,19 +1,23 @@
-##############################
-## Folders                  ##
-##############################
-express/*
-express/
-nodejs/node_modules/*
-nodejs/*
-debug-demo
-/webpack_study/webpack5-demo/node_modules/*
-nodejs_forward/server/node_modules/*
-webpack_study/1/node_modules/*
-vuex/node_modules/*
-Vue3_study_Composition/node_modules/*
-Vue3_study_options/node_modules/*
-Vue3_cli_sgg/node_modules/*
-vue_cli_sgg/demo/node_modules/@achrinza/node-ipc/.gitattributes
-vue_cli_sgg/.gitignore
+.DS_Store
+node_modules
+/dist
 
-my_todo_list/todo-list/node_modules/*
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
