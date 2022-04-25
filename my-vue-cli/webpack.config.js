@@ -57,19 +57,15 @@ module.exports = {
                     filename: 'img/[name][contenthash][ext]',
                 },
             },
-            // {
-            //     // 匹配js后缀文件
-            //     test: /\.js$/,
-            //     // 排除node_modules中的js
-            //     exclude: /node_modules/,
-            //     use: [
-            //         'babel-loader'
-            //     ],
-            // }
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: [
+                    'babel-loader'
+                ],
+            }
         ]
-    }
-
-
+    },
 }
 
 
