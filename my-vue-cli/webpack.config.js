@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
+
 module.exports = {
     // 模式 开发模式
     mode: 'development',
@@ -32,6 +34,7 @@ module.exports = {
             filename: 'styles/chunk-[contenthash].css',
             ignoreOrder: true,
         }),
+        new VueLoaderPlugin(),
     ],
     module: {
         rules: [
@@ -42,8 +45,7 @@ module.exports = {
                     'css-loader',
                     'sass-loader',
                 ]// 针对css文件使用的loader，注意有先后顺序，数组项越靠后越先执行
-            },
-            {
+            },{
                 test: /\.(png|jpe?g|gif|svg|webp|bmp)$/,
                 type: 'asset',
                 parser: {
@@ -56,15 +58,22 @@ module.exports = {
                     // 打包到 dist/image 文件下
                     filename: 'img/[name][contenthash][ext]',
                 },
-            },
-            {
+            },{
                 test: /\.js$/,
                 exclude: /(node_modules)/,
                 use: [
                     'babel-loader'
                 ],
+            },{
+                test:/\.vue$/,
+                use:'vue-loader'
             }
+
         ]
+    },
+    devServer:{
+        port:7000,
+        open:true
     },
 }
 

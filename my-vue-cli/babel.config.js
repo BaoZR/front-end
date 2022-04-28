@@ -2,7 +2,7 @@
 
 module.exports = {
     // 配置规则
-    presets: ["@babel/preset-env"],
+    presets: ["@babel/preset-env","@vue/babel-preset-jsx"],
     // 配置插件
     plugins: [
         [
